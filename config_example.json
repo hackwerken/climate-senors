@@ -1,0 +1,20 @@
+{
+  "networks": [
+    ["Yournetwork", "paswurd"]
+  ],
+
+  "submit_interval": 10,
+
+  "mqtt": {
+    "server": "some.server.example.com",
+    "port": 8883,
+    "key_file": "certs/sensor1.key.der",
+    "cert_file": "certs/sensor1.crt.der",
+    "root_topic": "huis/sensors"
+  },
+  
+  "meta": {
+    "id": "sensor1",
+    "location": "bla"
+    }
+} 
