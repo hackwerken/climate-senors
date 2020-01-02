@@ -78,6 +78,8 @@ def connect_mqtt():
         print('REPL disabled')
 
     client.on_repl_disabled = on_repl_disabled
+
+    client.publish('network', bytearray((sta_if.ifconfig()[0])).decode())
         
     led.off()
 

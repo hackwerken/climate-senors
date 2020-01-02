@@ -36,18 +36,17 @@ class Sensor:
         self.client.disconnect()
 
     def publish(self, topic, data):
-        self.client.publish(topic, data)
+        t = self.topic + '/' + topic
+        self.client.publish(t, data)
+        print('Published {} = {}'.format(topic, data))
 
     def update(self):
         self.client.ping()
         self.client.wait_msg()
 
     def publish_measurment(self, measurment):
-        topic = self.topic + '/measurement'
         data = measurment.to_line_protocol()
-
-        self.publish(topic, data)
-        print('Published {} = {}'.format(topic, data))
+        self.publish('measurement', data)
 
     def publish_status(self, status):
         self.client.publish(self.topic + '/status', status, retain=True, qos=1)
